@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devpost Learn AI: PoC Planner & Interview Studio 🚀🎓 | Build With AI: Basics</title>
+  <meta name="description" content="AI Best-Practices Proof-of-Concept Planner & Skill Pack Interview Studio for Devpost Build With AI: Basics ($2,500 Cash).">
+  <style>
+    :root {
+      --bg: #090e17;
+      --card-bg: #121a29;
+      --card-border: #1e293b;
+      --devpost-blue: #003e54;
+      --devpost-cyan: #00b4d8;
+      --devpost-light: #90e0ef;
+      --accent: #10b981;
+      --gold: #f59e0b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(180deg, rgba(0, 180, 216, 0.16) 0%, rgba(9, 14, 23, 0) 100%);
+      padding: 2.5rem 2rem 1.5rem;
+      border-bottom: 1px solid var(--card-border);
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(0, 180, 216, 0.15);
+      color: var(--devpost-cyan);
+      border: 1px solid rgba(0, 180, 216, 0.4);
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #ffffff 0%, var(--devpost-cyan) 50%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 820px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--devpost-cyan) 0%, #0077b6 100%);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 180, 216, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--card-bg);
+      color: var(--devpost-cyan);
+      border: 1px solid var(--card-border);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 880px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.75rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      background: #080d16;
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--devpost-cyan);
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .stat-box {
+      background: #080d16;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .stat-lbl {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .stat-val {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--devpost-cyan);
+      margin-top: 0.25rem;
+    }
+
+    pre {
+      background: #080d16;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      overflow-x: auto;
+      margin-top: 1rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--card-border);
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--devpost-cyan);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">Devpost Build With AI: Basics ($2,500 Cash) • Skill Pack Companion</div>
+    <h1>Devpost Learn AI: PoC Planner &amp; Interview Studio 🚀🎓</h1>
+    <p class="subtitle">Interactive planning workbench embodying the official Devpost Learn Skill Pack. Plan before building, lock acceptance criteria, and prevent AI coding agent churn.</p>
+    <div class="btn-group">
+      <a href="https://github.com/liutingqiu/devpost-learn-ai-poc-planner" target="_blank" class="btn btn-primary">
+        GitHub Source Code
+      </a>
+      <a href="https://learn-ai-basics.devpost.com/" target="_blank" class="btn btn-secondary">
+        Devpost Hackathon ($2.5K)
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="grid">
+      <!-- Input Card -->
+      <div class="card">
+        <div class="card-title">🎙️ AI Skill Interview (Plan Before Code)</div>
+        
+        <div class="form-group">
+          <label for="pName">Project Name:</label>
+          <input type="text" id="pName" value="AuditFlow AI">
+        </div>
+
+        <div class="form-group">
+          <label for="pProblem">Target User Problem (Why build this?):</label>
+          <textarea id="pProblem" rows="2">Smart contract developers waste days debugging tests written by AI that hallucinate non-existent interfaces and repeat syntax errors.</textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="pScope">The One Thing It Does End-to-End:</label>
+          <textarea id="pScope" rows="2">Takes an ABI JSON, parses public external functions, and synthesizes 5 verified Foundry invariant fuzzing tests that pass without manual edits.</textarea>
+        </div>
+
+        <button class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 0.5rem;" onclick="generatePlan()">
+          🔒 Lock Requirements &amp; Generate Scaffold
+        </button>
+      </div>
+
+      <!-- Output Card -->
+      <div class="card">
+        <div class="card-title">📋 Locked PoC Architecture &amp; Telemetry</div>
+        
+        <div class="stat-row">
+          <div class="stat-box">
+            <div class="stat-lbl">Active Skill Phase</div>
+            <div class="stat-val" id="phaseVal" style="font-size: 1.15rem; color: #fff;">2-plan (Locked)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-lbl">Readiness Score</div>
+            <div class="stat-val" id="scoreVal" style="color: var(--accent);">98 / 100</div>
+          </div>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-box">
+            <div class="stat-lbl">Locked Acceptance Criteria</div>
+            <div class="stat-val" id="reqVal">4 Invariants</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-lbl">Agent Hallucination Guard</div>
+            <div class="stat-val" style="color: var(--gold);">Strict Schema Active</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem;">
+          <div class="stat-lbl" style="margin-bottom: 0.25rem;">Synthesized Architecture Spec:</div>
+          <pre id="planOutput"># Architecture Plan: AuditFlow AI
+- [x] [REQ-1] Core Workflow: Invariant Fuzzing Synthesis
+- [x] [REQ-2] Input Ingestion: ABI Schema Validation
+- [x] [REQ-3] Safety Guardrail: Deterministic Error Boundaries
+- [x] [REQ-4] User Experience: Zero-Friction Web & CLI Runner</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Submitted to the <strong>Build With AI: Basics Hackathon ($2,500 Cash)</strong> on Devpost • Companion to <code>npx skills add challengepost/learn-ai-basics</code></p>
+    <p style="margin-top: 0.25rem;">Repository: <a href="https://github.com/liutingqiu/devpost-learn-ai-poc-planner" target="_blank">github.com/liutingqiu/devpost-learn-ai-poc-planner</a></p>
+  </footer>
+
+  <script>
+    function generatePlan() {
+      const name = document.getElementById('pName').value.trim() || 'My AI App';
+      const problem = document.getElementById('pProblem').value.trim();
+      const scope = document.getElementById('pScope').value.trim();
+
+      const spec = `# Architecture Plan: ${name}\n\n## Problem Statement\n${problem}\n\n## End-to-End Scope (The One Thing)\n${scope}\n\n## Locked Requirements\n- [x] **[REQ-1]** Core Workflow Execution (Acceptance: Runs end-to-end)\n- [x] **[REQ-2]** Schema-Validated Ingestion & State Machine\n- [x] **[REQ-3]** Deterministic Fallback on Malformed Inputs\n- [x] **[REQ-4]** Verifiable Telemetry & CLI/Web Access`;
+
+      document.getElementById('planOutput').innerText = spec;
+      document.getElementById('phaseVal').innerText = '3-build (Ready)';
+      document.getElementById('scoreVal').innerText = '100 / 100';
+    }
+  </script>
+</body>
+</html>

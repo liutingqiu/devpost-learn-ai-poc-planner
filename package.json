@@ -1,0 +1,26 @@
+{
+  "name": "devpost-learn-ai-poc-planner",
+  "version": "1.0.0",
+  "description": "Devpost Learn AI Skills Pack Interviewer, Proof-of-Concept Planner & Scaffold Engine",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test tests/*.test.js"
+  },
+  "keywords": [
+    "devpost",
+    "skills",
+    "poc-planner",
+    "ai-best-practices",
+    "claude-code",
+    "codex",
+    "cursor"
+  ],
+  "author": "Tingqiu Liu <tianqi689@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}
